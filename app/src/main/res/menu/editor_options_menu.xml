@@ -17,4 +17,10 @@
           android:showAsAction="ifRoom|withText"
           tools:ignore="AppCompatResource"
         />
+    <item android:id="@+id/menu_color"
+        android:title="Color"
+
+        android:showAsAction="always"
+        tools:ignore="AppCompatResource"/>
+
 </menu>

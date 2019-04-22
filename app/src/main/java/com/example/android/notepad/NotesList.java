@@ -61,6 +61,7 @@ public class NotesList extends ListActivity {
             NotePad.Notes._ID, // 0
             NotePad.Notes.COLUMN_NAME_TITLE, // 1
             NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE,//修改时间
+            NotePad.Notes.COLUMN_NAME_BACK_COLOR,
     };
 
     /** The index of the title column */
@@ -120,7 +121,8 @@ public class NotesList extends ListActivity {
         // The names of the cursor columns to display in the view, initialized to the title column
         String[] dataColumns = {
                 NotePad.Notes.COLUMN_NAME_TITLE,
-                NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE
+                NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE,
+
         } ;
 
         // The view IDs that will display the cursor columns, initialized to the TextView in
@@ -128,8 +130,8 @@ public class NotesList extends ListActivity {
         int[] viewIDs = { android.R.id.text1, R.id.text2 };
 
         // Creates the backing adapter for the ListView.
-        SimpleCursorAdapter adapter
-            = new SimpleCursorAdapter(
+        MyCursorAdapter adapter
+            = new MyCursorAdapter (
                       this,                             // The Context for the ListView
                       R.layout.noteslist_item,          // Points to the XML for a list item
                       cursor,                           // The cursor to get items from
@@ -267,22 +269,28 @@ public class NotesList extends ListActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-        case R.id.menu_add:
-          /*
-           * Launches a new Activity using an Intent. The intent filter for the Activity
-           * has to have action ACTION_INSERT. No category is set, so DEFAULT is assumed.
-           * In effect, this starts the NoteEditor Activity in NotePad.
-           */
-           startActivity(new Intent(Intent.ACTION_INSERT, getIntent().getData()));
-           return true;
+            case R.id.menu_add:
+              /*
+               * Launches a new Activity using an Intent. The intent filter for the Activity
+               * has to have action ACTION_INSERT. No category is set, so DEFAULT is assumed.
+               * In effect, this starts the NoteEditor Activity in NotePad.
+               */
+            startActivity(new Intent(Intent.ACTION_INSERT, getIntent().getData()));
+            return true;
         case R.id.menu_paste:
-          /*
-           * Launches a new Activity using an Intent. The intent filter for the Activity
-           * has to have action ACTION_PASTE. No category is set, so DEFAULT is assumed.
-           * In effect, this starts the NoteEditor Activity in NotePad.
-           */
-          startActivity(new Intent(Intent.ACTION_PASTE, getIntent().getData()));
-          return true;
+              /*
+               * Launches a new Activity using an Intent. The intent filter for the Activity
+               * has to have action ACTION_PASTE. No category is set, so DEFAULT is assumed.
+               * In effect, this starts the NoteEditor Activity in NotePad.
+               */
+            startActivity(new Intent(Intent.ACTION_PASTE, getIntent().getData()));
+            return true;
+        case R.id.menu_search:
+            Intent intent = new Intent();
+            intent.setClass(NotesList.this, NoteSearch.class);
+            NotesList.this.startActivity(intent);
+            return true;
+
         default:
             return super.onOptionsItemSelected(item);
         }
