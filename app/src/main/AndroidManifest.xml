@@ -28,6 +28,9 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <!-- 在SD卡中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+
     <application
         android:icon="@drawable/app_notes"
         android:label="@string/app_name">
@@ -40,7 +43,8 @@
 
         <activity
             android:name=".NotesList"
-            android:label="@string/title_notes_list">
+            android:label="@string/title_notes_list"
+            android:theme="@android:style/Theme.Holo.Light">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -77,9 +81,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.EDIT" />
                 <action android:name="com.android.notepad.action.EDIT_NOTE" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <data android:mimeType="vnd.android.cursor.item/vnd.google.note" />
             </intent-filter>
 
@@ -92,9 +94,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.INSERT" />
                 <action android:name="android.intent.action.PASTE" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <data android:mimeType="vnd.android.cursor.dir/vnd.google.note" />
             </intent-filter>
         </activity>
@@ -145,16 +145,24 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <!--添加搜索activity-->
+        <!-- 添加搜索activity -->
         <activity
-            android:name="NoteSearch"
-            android:label="Search">
-        </activity>
+            android:name=".NoteSearch"
+            android:label="Search"></activity>
 
-        <activity android:name="NoteColor"
-            android:theme="@android:style/Theme.Holo.Light.Dialog"
+        <activity
+            android:name=".NoteColor"
             android:label="ChangeColor"
-            android:windowSoftInputMode="stateVisible"/>
+            android:theme="@android:style/Theme.Holo.Dialog"
+            android:windowSoftInputMode="stateVisible" />
+
+
+        <!--添加导出activity-->
+        <activity android:name="OutputText"
+            android:label="Output"
+            android:theme="@android:style/Theme.Holo.Dialog"
+            android:windowSoftInputMode="stateVisible">
+        </activity>
 
     </application>
 

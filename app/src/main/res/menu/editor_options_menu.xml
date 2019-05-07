@@ -19,8 +19,10 @@
         />
     <item android:id="@+id/menu_color"
         android:title="Color"
-
+        android:icon="@drawable/ic_menu_color"
         android:showAsAction="always"
         tools:ignore="AppCompatResource"/>
+    <item android:id="@+id/menu_output"
+        android:title="@string/menu_output"/>
 
 </menu>
