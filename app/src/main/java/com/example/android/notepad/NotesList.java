@@ -67,6 +67,11 @@ public class NotesList extends ListActivity {
     /** The index of the title column */
     private static final int COLUMN_INDEX_TITLE = 1;
 
+    private Cursor cursor;
+    private MyCursorAdapter adapter;
+    private String[] dataColumns = { NotePad.Notes.COLUMN_NAME_TITLE ,  NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE } ;
+    private int[] viewIDs = { android.R.id.text1 , R.id.text2};
+
     /**
      * onCreate is called when Android starts this Activity from scratch.
      */
@@ -290,7 +295,61 @@ public class NotesList extends ListActivity {
             intent.setClass(NotesList.this, NoteSearch.class);
             NotesList.this.startActivity(intent);
             return true;
-
+        //排序
+            //按创建时间
+        case R.id.menu_sort1:
+            cursor = managedQuery(
+                    getIntent().getData(),
+                    PROJECTION,
+                    null,
+                    null,
+                    NotePad.Notes._ID
+            );
+            adapter = new MyCursorAdapter(
+                    this,
+                    R.layout.noteslist_item,
+                    cursor,
+                    dataColumns,
+                    viewIDs
+            );
+            setListAdapter(adapter);
+            return true;
+            //修改时间排序
+        case R.id.menu_sort2:
+            cursor = managedQuery(
+                    getIntent().getData(),
+                    PROJECTION,
+                    null,
+                    null,
+                    NotePad.Notes.DEFAULT_SORT_ORDER
+            );
+            adapter = new MyCursorAdapter(
+                    this,
+                    R.layout.noteslist_item,
+                    cursor,
+                    dataColumns,
+                    viewIDs
+            );
+            setListAdapter(adapter);
+            return true;
+        //颜色排序
+        case R.id.menu_sort3:
+            cursor = managedQuery(
+                    getIntent().getData(),
+                    PROJECTION,
+                    null,
+                    null,
+                    NotePad.Notes.COLUMN_NAME_BACK_COLOR
+            );
+            adapter = new MyCursorAdapter(
+                    this,
+                    R.layout.noteslist_item,
+                    cursor,
+                    dataColumns,
+                    viewIDs
+            );
+            setListAdapter(adapter);
+            return true;
         default:
             return super.onOptionsItemSelected(item);
         }

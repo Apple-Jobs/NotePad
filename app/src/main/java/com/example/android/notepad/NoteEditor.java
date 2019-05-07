@@ -316,16 +316,16 @@ public class NoteEditor extends Activity {
                     mText.setBackgroundColor(Color.rgb(255, 255, 255));
                     break;
                 case NotePad.Notes.YELLOW_COLOR:
-                    mText.setBackgroundColor(Color.rgb(247, 216, 133));
+                    mText.setBackgroundColor(Color.rgb(255, 255, 180));
                     break;
                 case NotePad.Notes.BLUE_COLOR:
-                    mText.setBackgroundColor(Color.rgb(165, 202, 237));
+                    mText.setBackgroundColor(Color.rgb(191, 231, 255));
                     break;
                 case NotePad.Notes.GREEN_COLOR:
-                    mText.setBackgroundColor(Color.rgb(161, 214, 174));
+                    mText.setBackgroundColor(Color.rgb(196, 255, 207));
                     break;
                 case NotePad.Notes.RED_COLOR:
-                    mText.setBackgroundColor(Color.rgb(244, 149, 133));
+                    mText.setBackgroundColor(Color.rgb(252, 192, 207));
                     break;
                 default:
                     mText.setBackgroundColor(Color.rgb(255, 255, 255));

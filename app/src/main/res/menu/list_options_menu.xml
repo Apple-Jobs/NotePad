@@ -23,4 +23,22 @@
         android:showAsAction="always"
         tools:ignore="AppCompatResource">
     </item>
+    <item
+        android:id="@+id/menu_sort"
+        android:title="Sort"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:showAsAction="always"
+        tools:ignore="AppCompatResource">
+        <menu>
+            <item
+                android:id="@+id/menu_sort1"
+                android:title="By CreateTime"/>
+            <item
+                android:id="@+id/menu_sort2"
+                android:title="By UpdateTime"/>
+            <item
+                android:id="@+id/menu_sort3"
+                android:title="By Color"/>
+        </menu>
+    </item>
 </menu>
